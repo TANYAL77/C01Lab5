@@ -11,6 +11,12 @@
           name: Backend test
           runs-on: ubuntu-latest
 
+      services:
+          mongodb:
+          image: mongo
+          ports:
+            - 27017:27017
+
           defaults:
               run:
                   working-directory: ./quirknotes/backend
@@ -26,5 +32,13 @@
                 uses: actions/setup-node@v3
                 with:
                   node-version: ${{ matrix.node-version }}
+
+              - name: Install Dependencies
+                run: npm install
+
+              - name: Start server
+                run: node server.js &
+                env:
+                  MONGO_URL: mongodb://localhost:27017/test
               - run: npm i
               - run: npm test
