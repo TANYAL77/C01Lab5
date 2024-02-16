@@ -13,9 +13,9 @@
 
       services:
           mongodb:
-          image: mongo
-          ports:
-            - 27017:27017
+            image: mongo
+            ports:
+              - 27017:27017
 
           defaults:
               run:
@@ -35,9 +35,5 @@
 
               - name: Install Dependencies
                 run: npm install
-
-              - name: Start server
-                run: node server.js &
-                env:
-                  MONGO_URL: mongodb://localhost:27017/test
+              - run: npm run dev
               - run: npm test
