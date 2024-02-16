@@ -40,5 +40,4 @@
                 run: node server.js &
                 env:
                   MONGO_URL: mongodb://localhost:27017/test
-              - run: npm i
               - run: npm test
