@@ -35,5 +35,3 @@
               
               - run: npm i
               - run: npm test
-                env:
-                  CI:true
